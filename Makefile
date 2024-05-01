@@ -9,8 +9,7 @@ NAME = corewar
 
 CC = gcc
 
-FLAGS =  -Wall -Wextra -Wno-unused-value -Wno-sign-compare \
-			-Wno-unused-parameter -I./include -g
+FLAGS =  -Wall -Wextra -I./include -g
 
 SRC = $(shell find src/ -type f -name "*.c")
 
