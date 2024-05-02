@@ -29,3 +29,4 @@ typedef struct args_s {
 int handle_args(int argc, char **argv);
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
+int my_atoi(char const *);
