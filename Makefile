@@ -58,4 +58,3 @@ debug: fclean $(NAME)
 	@cat /tmp/valgrind-$(NAME)
 
 re: fclean all
-
