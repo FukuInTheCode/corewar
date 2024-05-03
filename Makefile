@@ -2,33 +2,59 @@
 ## EPITECH PROJECT, 2024
 ## Makefile
 ## File description:
-## Makefile for amazed
+## Placeholder
 ##
 
-NAME = corewar
+NAME   = corewar
 
-CC = gcc
+CC	   = gcc
 
-FLAGS =  -Wall -Wextra -Wno-unused-value -Wno-sign-compare \
-			-Wno-unused-parameter -I./include -g
+WFLAGS = -Wall -Wextra -Werror
 
-SRC = $(shell find src/ -type f -name "*.c")
+LIBS = -lm -lc
 
-OBJ = $(SRC:src/%.c=obj/%.o)
+CFLAGS = -I./include/ $(WFLAGS) $(LIBS)
+
+SRC	= $(shell find src/ -type f -name "*.c")
+
+OBJ	= $(SRC:src/%.c=obj/%.o)
+
+RED = \033[1;31m
+
+GREEN = \033[1;32m
+
+BLUE = \033[1;34m
+
+NC = \033[0m
 
 all: $(NAME)
 
-$(NAME):	$(OBJ)
-			 $(CC) $(FLAGS) -o $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	@echo -e "$(BLUE)Compiling binary...$(NC)"
+	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS)
 
 obj/%.o: src/%.c
-		@mkdir -p $(dir $@)
-		@$(CC) -c -o $@ $< $(FLAGS)
+	@echo -e "$(GREEN)Compiling $<...$(NC)"
+	@mkdir -p $(dir $@)
+	@$(CC) -c -o $@ $< $(CFLAGS)
 
 clean:
-		@rm -rf obj
+	@if [ -d obj/ ]; then echo -e "$(RED)Cleaning objects.$(NC)"; fi
+	@rm -rf obj
 
 fclean: clean
-		@rm -f $(NAME)
+	@if [ -e "$(NAME)" ]; then echo -e "$(RED)Cleaning binary.$(NC)"; fi
+	@rm -f $(NAME)
+
+tests_run:
+	@echo -e "$(BLUE)Running tests...$(NC)"
+
+d: debug
+
+debug: CFLAGS += -g
+debug: fclean $(NAME)
+	@valgrind --log-file=/tmp/valgrind-$(NAME) --track-fds=all \
+		--leak-check=full --show-leak-kinds=all ./$(NAME)
+	@cat /tmp/valgrind-$(NAME)
 
 re: fclean all
