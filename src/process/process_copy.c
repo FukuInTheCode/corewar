@@ -7,3 +7,11 @@
 
 #include "my.h"
 
+process_t *process_copy(process_t *head)
+{
+    process_t *copy = process_create();
+
+    my_memcpy(copy, head, sizeof(process_t));
+    copy->next = NULL;
+    return copy;
+}
