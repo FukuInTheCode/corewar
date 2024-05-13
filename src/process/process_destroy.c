@@ -7,3 +7,7 @@
 
 #include "my.h"
 
+void process_destroy(process_t *to_destroy)
+{
+    free(to_destroy);
+}
