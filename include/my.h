@@ -28,3 +28,14 @@ typedef struct process_s {
     uint8_t registers[REG_NUMBER][REG_SIZE];
     size_t cycles_to_die;
 } process_t;
+
+process_t *process_create(void);
+void process_destroy(process_t *);
+void process_kill(process_t *to_kill);
+int process_update(process_t *process);
+void process_move(process_t *process, int nbr_bytes);
+int process_change_register(process_t *process, size_t register_id,
+    size_t value);
+size_t process_get_register(process_t *process, size_t register_id);
+void process_add(process_t *head, process_t *to_add);
+process_t *process_copy(process_t *head);
