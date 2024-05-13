@@ -7,3 +7,7 @@
 
 #include "my.h"
 
+void process_kill(process_t *to_kill)
+{
+    to_kill->is_dead = true;
+}
