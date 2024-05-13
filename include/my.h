@@ -41,3 +41,4 @@ void process_add(process_t *head, process_t *to_add);
 process_t *process_copy(process_t *head);
 
 void *my_memset(char *, char, size_t);
+void *my_memcpy(void *dest, void *src, size_t n);
