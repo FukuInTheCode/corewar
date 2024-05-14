@@ -40,7 +40,8 @@ int check_binary(char *filename)
         fclose(file);
         return 84;
     }
-    if (!check_prog_name(&data) || !check_comment(&data) || !check_prog_size(&data)) {
+    if (!check_prog_name(&data) || !check_comment(&data)
+        || !check_prog_size(&data)) {
         fclose(file);
         return 84;
     }
