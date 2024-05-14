@@ -62,9 +62,21 @@ int process_change_register(process_t *process, size_t register_id, uint8_t *);
 size_t process_get_register(process_t *process, size_t register_id);
 void process_add(process_t **head, process_t *to_add);
 process_t *process_copy(process_t *head);
+int process_read_instruction(process_t *process, arena_t *arena);
 
 void *my_memset(char *, char, size_t);
 void *my_memcpy(void *dest, void *src, size_t n);
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
 int my_atoi(char const *);
+
+typedef int(*instruction_f_t)(process_t *, arena_t *);
+
+typedef struct instruction_s {
+    uint8_t code;
+    instruction_f_t f;
+} instruction_t;
+
+static instruction_t const instructions[] = {
+    {0, NULL}
+};
