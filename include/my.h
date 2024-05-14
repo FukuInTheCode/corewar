@@ -37,7 +37,7 @@ void process_move(process_t *process, int nbr_bytes);
 int process_change_register(process_t *process, size_t register_id,
     size_t value);
 size_t process_get_register(process_t *process, size_t register_id);
-void process_add(process_t *head, process_t *to_add);
+void process_add(process_t **head, process_t *to_add);
 process_t *process_copy(process_t *head);
 
 void *my_memset(char *, char, size_t);
