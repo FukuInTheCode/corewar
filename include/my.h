@@ -27,6 +27,8 @@ typedef struct args_s {
 } args_t;
 
 int handle_args(int argc, char **argv);
+int check_binary(char *file);
+
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
 int my_atoi(char const *);
