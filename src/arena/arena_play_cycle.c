@@ -7,3 +7,10 @@
 
 #include "my.h"
 
+int arena_play_cycle(arena_t *arena)
+{
+    for (process_t *tmp = arena->champions; tmp; tmp = tmp->next)
+        if (!tmp->cycles_to_wait)
+            process_read_instruction(tmp, arena);
+    return 0;
+}
