@@ -11,6 +11,8 @@
 size_t process_get_arg_size(process_t *process, arena_t *arena,
     size_t arg_type)
 {
+    if (!process || !arena)
+        return 0;
     if (arg_type == T_DIR)
         return DIR_SIZE;
     if (arg_type == T_IND)

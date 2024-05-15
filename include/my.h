@@ -6,14 +6,17 @@
 */
 
 #pragma once
-#define MY_H
+    #define MY_H
     #include <unistd.h>
     #include "op.h"
     #include <stdint.h>
     #include <stdbool.h>
     #include <stddef.h>
     #include <stdint.h>
+    #include <stdlib.h>
+    #include <unistd.h>
     #include "op.h"
+    #include <stdio.h>
 
 typedef struct process_s {
     int process_id;
