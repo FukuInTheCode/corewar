@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-process_t *process_create()
+process_t *process_create(void)
 {
     process_t *new_process = malloc(sizeof(process_t));
 
