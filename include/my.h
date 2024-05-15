@@ -77,6 +77,9 @@ typedef struct instruction_s {
     instruction_f_t f;
 } instruction_t;
 
+int instruction_live(process_t *process, arena_t *arena);
+
 static instruction_t const instructions[] = {
-    {0, NULL}
+    {0x01, instruction_live},
+    {0x00, NULL}
 };
