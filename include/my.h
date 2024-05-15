@@ -63,6 +63,12 @@ size_t process_get_register(process_t *process, size_t register_id);
 void process_add(process_t **head, process_t *to_add);
 process_t *process_copy(process_t *head);
 int process_read_instruction(process_t *process, arena_t *arena);
+int process_get_arg_type(process_t *process, arena_t *arena, size_t arg_id);
+size_t process_get_arg_size(process_t *process, arena_t *arena,
+    size_t arg_type);
+size_t process_get_arg_value(process_t *process, arena_t *arena,
+    size_t arg_id);
+
 
 void *my_memset(char *, char, size_t);
 void *my_memcpy(void *dest, void *src, size_t n);
