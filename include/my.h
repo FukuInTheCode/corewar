@@ -70,6 +70,7 @@ int64_t process_get_arg_size(process_t *process, arena_t *arena,
     int64_t arg_type);
 int64_t process_get_arg_value(process_t *process, arena_t *arena,
     int64_t arg_id);
+int create_process(args_t *);
 
 
 void arena_write(arena_t *arena, int64_t pos, uint8_t n, int64_t value);
@@ -81,6 +82,8 @@ void *my_memcpy(void *dest, void *src, int64_t n);
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
 int my_atoi(char const *);
+int my_strlen(char const *);
+char *my_strcat(char *, char const *);
 
 typedef void(*instruction_f_t)(process_t *, arena_t *);
 
