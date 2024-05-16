@@ -8,8 +8,7 @@
 #include "my.h"
 #include "op.h"
 
-
-void instruction_add(process_t *process, arena_t *arena)
+void instruction_and(process_t *process, arena_t *arena)
 {
     size_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[5].type[0];
     size_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[5].type[1];
