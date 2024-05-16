@@ -12,7 +12,7 @@ static void do_ldi(process_t *process, arena_t *arena,
     int64_t arg2, int64_t arg3)
 {
     int64_t arg1_type =
-        process_get_arg_type(process, arena, 0) & op_tab[9].type[0];
+        process_get_arg_type(process, arena, 0) & ops[9].type[0];
     int64_t arg1 = arg1_type;
 
     if (arg1_type == T_REG)
@@ -31,9 +31,9 @@ static void do_ldi(process_t *process, arena_t *arena,
 
 void instruction_ldi(process_t *process, arena_t *arena)
 {
-    int64_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[9].type[0];
-    int64_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[9].type[1];
-    int64_t arg3 = process_get_arg_type(process, arena, 2) & op_tab[9].type[2];
+    int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[9].type[0];
+    int64_t arg2 = process_get_arg_type(process, arena, 1) & ops[9].type[1];
+    int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[9].type[2];
 
     if (!arg1 || !arg2 || !arg3)
         return;

@@ -10,9 +10,9 @@
 
 void instruction_xor(process_t *process, arena_t *arena)
 {
-    int64_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[7].type[0];
-    int64_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[7].type[1];
-    int64_t arg3 = process_get_arg_type(process, arena, 2) & op_tab[7].type[2];
+    int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[7].type[0];
+    int64_t arg2 = process_get_arg_type(process, arena, 1) & ops[7].type[1];
+    int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[7].type[2];
 
     if (!arg1 || !arg2 || !arg3)
         return process_move(process, 1);

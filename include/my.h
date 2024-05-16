@@ -24,7 +24,7 @@ typedef struct process_s {
     uint8_t binary[MEM_SIZE + 1];
     bool is_dead;
     int cycles_to_wait;
-    int64_t PC;
+    size_t PC;
     bool carry;
     uint8_t registers[REG_NUMBER][REG_SIZE];
     int64_t cycles_to_die;

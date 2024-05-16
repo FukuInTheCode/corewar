@@ -10,10 +10,10 @@
 
 static int set_wait(process_t *process, int code)
 {
-    for (int64_t i = 0; op_tab[i].mnemonique; i++) {
-        if (op_tab[i].code != code)
+    for (int64_t i = 0; ops[i].mnemonique; i++) {
+        if (ops[i].code != code)
             continue;
-        process->cycles_to_wait = op_tab[i].nbr_cycles;
+        process->cycles_to_wait = ops[i].nbr_cycles;
         return 0;
     }
     return 0;
