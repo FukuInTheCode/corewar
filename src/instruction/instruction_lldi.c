@@ -29,11 +29,11 @@ static void do_ldi(process_t *process, arena_t *arena,
     process->carry = !arg1;
 }
 
-void instruction_ldi(process_t *process, arena_t *arena)
+void instruction_lldi(process_t *process, arena_t *arena)
 {
-    int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[9].type[0];
-    int64_t arg2 = process_get_arg_type(process, arena, 1) & ops[9].type[1];
-    int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[9].type[2];
+    int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[13].type[0];
+    int64_t arg2 = process_get_arg_type(process, arena, 1) & ops[13].type[1];
+    int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[13].type[2];
 
     if (!arg1 || !arg2 || !arg3)
         return;
