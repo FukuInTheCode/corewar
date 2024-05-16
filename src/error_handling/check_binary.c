@@ -10,7 +10,7 @@
 
 static bool check_prog_size(header_t *data)
 {
-    if (data->prog_size < MEM_SIZE)
+    if (data->prog_size > MEM_SIZE)
         return true;
     return false;
 }
@@ -36,7 +36,7 @@ int check_binary(char *filename)
 
     if (file == NULL)
         return 84;
-    if (fread(&data, sizeof(header_t), 1, file) != (size_t)-1) {
+    if (fread(&data, sizeof(header_t), 1, file) == (size_t)-1) {
         fclose(file);
         return 84;
     }
