@@ -8,34 +8,25 @@
 #include "my.h"
 #include "op.h"
 
-static int get_values(process_t *process, arena_t *arena,
-    size_t *first, size_t *second)
+void instruction_xor(process_t *process, arena_t *arena)
 {
-    *first = process_get_arg_value(process, arena, 0);
-    *second = process_get_arg_value(process, arena, 1);
-    if (*first == T_REG)
-        *first = process_get_register(process, *first);
-    if (*second == T_REG)
-        *second = process_get_register(process, *second);
-    return 0;
-}
+    size_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[7].type[0];
+    size_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[7].type[1];
+    size_t arg3 = process_get_arg_type(process, arena, 2) & op_tab[7].type[2];
 
-int instruction_xor(process_t *process, arena_t *arena)
-{
-    size_t first = process_get_arg_type(process, arena, 0);
-    size_t second = process_get_arg_type(process, arena, 1);
-    size_t third = process_get_arg_type(process, arena, 2);
-    size_t result = 0;
-
-    if (third != T_REG || first == 0 || second == 0) {
-        process_move(process, 1);
-        return 0;
-    }
-    get_values(process, arena, &first, &second);
-    result = first ^ second;
-    process_change_register(process, third, (uint8_t *)&result);
-    process_move(process, 2 + process_get_arg_size(process, arena, 0) +
-        process_get_arg_size(process, arena, 1));
-    process->carry = !result;
-    return 0;
+    if (!arg1 || !arg2 || !arg3)
+        return process_move(process, 1);
+    arg1 = process_get_arg_value(process, arena, 0);
+    arg2 = process_get_arg_value(process, arena, 1);
+    arg3 = process_get_arg_value(process, arena, 2);
+    if (process_get_arg_type(process, arena, 0) == T_REG)
+        arg1 = process_get_register(process, arg1);
+    else if (process_get_arg_type(process, arena, 0) == T_IND)
+        arg1 = arena_read(arena, process->PC + arg1, IND_SIZE);
+    if (process_get_arg_type(process, arena, 1) == T_REG)
+        arg2 = process_get_register(process, arg2);
+    else if (process_get_arg_type(process, arena, 1) == T_IND)
+        arg2 = arena_read(arena, process->PC + arg2, IND_SIZE);
+    arg1 ^= arg2;
+    process_change_register(process, arg3, (uint8_t *)&arg1);
 }
