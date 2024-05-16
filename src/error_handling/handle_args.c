@@ -66,5 +66,7 @@ int handle_args(int argc, char **argv)
         if (handle_arg(argc, argv, &i, &args))
             return 84;
     }
+    if (create_process(&args) == 84)
+        return 84;
     return 0;
 }
