@@ -15,8 +15,6 @@ static int handle_no_flags(char *filename, args_t *args)
     args->proccess_n++;
     if (check_binary(filename) == 84)
         return 84;
-    if (create_process(args) == 84)
-        return 84;
     return 0;
 }
 
@@ -68,5 +66,7 @@ int handle_args(int argc, char **argv)
         if (handle_arg(argc, argv, &i, &args))
             return 84;
     }
+    if (create_process(&args) == 84)
+        return 84;
     return 0;
 }
