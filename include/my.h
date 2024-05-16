@@ -53,6 +53,7 @@ int process_change_register(process_t *process, size_t register_id, uint8_t *);
 size_t process_get_register(process_t *process, size_t register_id);
 void process_add(process_t **head, process_t *to_add);
 process_t *process_copy(process_t *head);
+int create_process(args_t *);
 
 void *my_memset(char *, char, size_t);
 void *my_memcpy(void *dest, void *src, size_t n);
