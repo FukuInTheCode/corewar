@@ -29,6 +29,15 @@ static bool check_prog_name(header_t *data)
     return false;
 }
 
+bool is_extension(const char *extension, const char *filename) {
+    size_t ext_len = my_strlen(extension);
+    size_t file_len = strlen(filename);
+
+    if (file_len < ext_len)
+        return false;
+    return my_strcmp(filename + file_len - ext_len, extension) == 0;
+}
+
 int check_binary(char *filename)
 {
     FILE *file = fopen(filename, "rb");
@@ -40,6 +49,8 @@ int check_binary(char *filename)
         fclose(file);
         return 84;
     }
+    if (!is_extension(".cor", filename))
+        return 84;
     if (!check_prog_name(&data) || !check_comment(&data)
         || !check_prog_size(&data)) {
         fclose(file);
