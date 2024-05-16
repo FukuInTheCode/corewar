@@ -13,7 +13,7 @@ int process_change_register(process_t *process, int64_t register_id,
 {
     if (!process || register_id >= REG_NUMBER)
         return 84;
-    for (int64_t i = 0;  i < REG_SIZE; i++)
+    for (int64_t i = 0; i < REG_SIZE; i++)
         process->registers[register_id][i] = reg[i];
     return 0;
 }

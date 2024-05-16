@@ -13,7 +13,6 @@ arena_t *arena_create(void)
 {
     arena_t *arena = malloc(sizeof(arena_t));
 
-
     if (!arena)
         return NULL;
     my_memset((void *)arena, 0, sizeof(arena_t));

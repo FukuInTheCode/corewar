@@ -8,7 +8,8 @@
 #include "my.h"
 #include "op.h"
 
-int64_t process_get_arg_value(process_t *process, arena_t *arena, int64_t arg_id)
+int64_t process_get_arg_value(process_t *process,
+    arena_t *arena, int64_t arg_id)
 {
     int64_t offset = 2;
     int64_t arg_type = 0;
