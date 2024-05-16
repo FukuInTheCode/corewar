@@ -59,3 +59,4 @@ void *my_memcpy(void *dest, void *src, size_t n);
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
 int my_atoi(char const *);
+int my_strlen(char const *);
