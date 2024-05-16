@@ -7,16 +7,6 @@
 
 #include "my.h"
 #include "op.h"
-#include <stdint.h>
-
-static size_t get_value(uint8_t *start, size_t bytes)
-{
-    size_t value = 0;
-
-    for (size_t i = 0; i < bytes; i++)
-        value = (value << 1) + start[i];
-    return value;
-}
 
 size_t process_get_arg_value(process_t *process, arena_t *arena, size_t arg_id)
 {
@@ -30,11 +20,10 @@ size_t process_get_arg_value(process_t *process, arena_t *arena, size_t arg_id)
             process_get_arg_type(process, arena, i));
     arg_type = process_get_arg_type(process, arena, arg_id);
     if (arg_type == T_DIR)
-        return get_value(arena->arena + process->PC + offset, DIR_SIZE);
+        return arena_read(arena, process->PC + offset, DIR_SIZE);
     if (arg_type == T_IND)
-        return get_value(arena->arena + (process->PC + get_value(arena->arena
-            + process->PC + offset, IND_SIZE)) % IDX_MOD, REG_SIZE);
+        return arena_read(arena, process->PC + offset, IND_SIZE);
     if (arg_type == T_REG)
-        return get_value(arena->arena + process->PC + offset, 1);
+        return arena_read(arena, process->PC + offset, 1);
     return 0;
 }
