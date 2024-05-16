@@ -90,8 +90,38 @@ typedef struct instruction_s {
 } instruction_t;
 
 void instruction_live(process_t *process, arena_t *arena);
+void instruction_ld(process_t *process, arena_t *arena);
+void instruction_st(process_t *process, arena_t *arena);
+void instruction_add(process_t *process, arena_t *arena);
+void instruction_sub(process_t *process, arena_t *arena);
+void instruction_and(process_t *process, arena_t *arena);
+void instruction_or(process_t *process, arena_t *arena);
+void instruction_xor(process_t *process, arena_t *arena);
+void instruction_zjmp(process_t *process, arena_t *arena);
+void instruction_ldi(process_t *process, arena_t *arena);
+void instruction_sti(process_t *process, arena_t *arena);
+void instruction_fork(process_t *process, arena_t *arena);
+void instruction_lld(process_t *process, arena_t *arena);
+void instruction_lldi(process_t *process, arena_t *arena);
+void instruction_lfork(process_t *process, arena_t *arena);
+void instruction_aff(process_t *process, arena_t *arena);
 
 static instruction_t const instructions[] = {
     {0x01, instruction_live},
+    {0x02, instruction_ld},
+    {0x03, instruction_st},
+    {0x04, instruction_add},
+    {0x05, instruction_sub},
+    {0x06, instruction_and},
+    {0x07, instruction_or},
+    {0x08, instruction_xor},
+    {0x09, instruction_zjmp},
+    {0x0a, instruction_ldi},
+    {0x0b, instruction_sti},
+    {0x0c, instruction_fork},
+    {0x0d, instruction_lld},
+    {0x0e, instruction_lldi},
+    {0x0f, instruction_lfork},
+    {0x10, instruction_aff},
     {0x00, NULL}
 };
