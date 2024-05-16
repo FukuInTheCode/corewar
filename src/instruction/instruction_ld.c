@@ -23,5 +23,6 @@ int instruction_ld(process_t *process, arena_t *arena)
     process_change_register(process, process_get_arg_value(process, arena, 1),
         (uint8_t *)&first);
     process->carry = !first;
+    process_move(process, 2 + process_get_arg_size(process, arena, 0));
     return 0;
 }
