@@ -9,10 +9,10 @@
 
 int instruction_live(process_t *process, arena_t *arena)
 {
-    int live_id = 0;
+    long long live_id = 0;
 
     arena->nbr_live++;
-    live_id = (int)arena->arena[process->PC + 1];
+    live_id = arena_read(arena, process->PC + 1, DIR_SIZE);
     for (process_t *tmp = arena->champions; tmp; tmp= tmp->next) {
         if (tmp->process_id != live_id)
             continue;
