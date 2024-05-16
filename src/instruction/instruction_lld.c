@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <sys/types.h>
 
-void instruction_ld(process_t *process, arena_t *arena)
+void instruction_lld(process_t *process, arena_t *arena)
 {
     int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[1].type[0];
     int64_t arg2 = process_get_arg_type(process, arena, 1) & ops[1].type[1];
@@ -18,8 +18,8 @@ void instruction_ld(process_t *process, arena_t *arena)
     if (!arg1 || !arg2)
         return process_move(process, 1);
     if (arg1 == T_IND)
-        arg1 = arena_read(arena, (process->PC +
-            process_get_arg_value(process, arena, 0)) % IDX_MOD, IND_SIZE);
+        arg1 = arena_read(arena, process->PC +
+            process_get_arg_value(process, arena, 0), IND_SIZE);
     else
         arg1 = process_get_arg_value(process, arena, 0);
     arg2 = process_get_arg_value(process, arena, 1);
