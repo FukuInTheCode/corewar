@@ -8,6 +8,17 @@
 #include "my.h"
 #include "op.h"
 
+static void update_process(process_t *process, arena_t *arena,
+    int64_t arg1, int64_t arg3)
+{
+    process_change_register(process, arg3, (uint8_t *)&arg1);
+    process->carry = !arg1;
+    process_move(process, 3 + process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 0)) +
+        process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 1)));
+}
+
 void instruction_or(process_t *process, arena_t *arena)
 {
     int64_t arg1 = process_get_arg_type(process, arena, 0) & ops[6].type[0];
@@ -28,5 +39,5 @@ void instruction_or(process_t *process, arena_t *arena)
     else if (process_get_arg_type(process, arena, 1) == T_IND)
         arg2 = arena_read(arena, process->PC + arg2, IND_SIZE);
     arg1 |= arg2;
-    process_change_register(process, arg3, (uint8_t *)&arg1);
+    update_process(process, arena, arg1, arg3);
 }

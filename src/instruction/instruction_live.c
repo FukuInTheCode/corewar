@@ -18,5 +18,5 @@ void instruction_live(process_t *process, arena_t *arena)
             continue;
         tmp->cycles_to_die = arena->cycles_to_die;
     }
-    process_move(process, 4);
+    process_move(process, 5);
 }

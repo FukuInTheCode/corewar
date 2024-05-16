@@ -13,7 +13,7 @@ void instruction_lfork(process_t *process, arena_t *arena)
     process_t *forked = process_create();
 
     if (!forked)
-        return;
+        return process_move(process, 1);
     process_add(&arena->champions, forked);
     forked->cycles_to_wait = ops[14].nbr_cycles + 1;
     process_move(forked, process->PC + to_go);

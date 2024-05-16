@@ -40,7 +40,7 @@ void instruction_sti(process_t *process, arena_t *arena)
     int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[10].type[2];
 
     if (!arg1 || !arg2 || !arg3)
-        return;
+        return process_move(process, 1);
     if (arg3 == T_REG)
         arg3 = process_get_register(process,
             process_get_arg_value(process, arena, 2));

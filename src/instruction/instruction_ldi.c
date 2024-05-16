@@ -8,6 +8,15 @@
 #include "my.h"
 #include "op.h"
 
+static void update_process(process_t *process, arena_t *arena, int64_t arg1)
+{
+    process->carry = !arg1;
+    process_move(process, 3 + process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 0)) +
+        process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 1)));
+}
+
 static void do_ldi(process_t *process, arena_t *arena,
     int64_t arg2, int64_t arg3)
 {
@@ -27,6 +36,7 @@ static void do_ldi(process_t *process, arena_t *arena,
     arg1 = arena_read(arena, (process->PC + arg1) % IDX_MOD, REG_SIZE);
     process_change_register(process, arg3, (uint8_t *)&arg1);
     process->carry = !arg1;
+    update_process(process, arena, arg1);
 }
 
 void instruction_ldi(process_t *process, arena_t *arena)
@@ -36,7 +46,7 @@ void instruction_ldi(process_t *process, arena_t *arena)
     int64_t arg3 = process_get_arg_type(process, arena, 2) & ops[9].type[2];
 
     if (!arg1 || !arg2 || !arg3)
-        return;
+        return process_move(process, 1);
     if (arg2 == T_REG)
         arg2 = process_get_register(process,
             process_get_arg_value(process, arena, 1));

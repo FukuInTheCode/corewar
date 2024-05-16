@@ -24,4 +24,9 @@ void instruction_add(process_t *process, arena_t *arena)
     arg2 = process_get_register(process, arg2);
     arg1 += arg2;
     process_change_register(process, arg3, (uint8_t *)&arg1);
+    process->carry = !arg1;
+    process_move(process, 3 + process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 0)) +
+        process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 1)));
 }

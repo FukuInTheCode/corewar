@@ -24,4 +24,9 @@ void instruction_ld(process_t *process, arena_t *arena)
         arg1 = process_get_arg_value(process, arena, 0);
     arg2 = process_get_arg_value(process, arena, 1);
     process_change_register(process, arg2, (uint8_t *)&arg1);
+    process->carry = !arg1;
+    process_move(process, 2 + process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 0)) +
+        process_get_arg_size(process, arena,
+        process_get_arg_type(process, arena, 1)));
 }
