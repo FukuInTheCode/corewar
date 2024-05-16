@@ -7,7 +7,6 @@
 
 #include "my.h"
 #include "op.h"
-#include "string.h"
 
 static bool check_prog_size(header_t *data)
 {
@@ -31,12 +30,12 @@ static bool check_prog_name(header_t *data)
 }
 
 bool is_extension(const char *extension, const char *filename) {
-    size_t ext_len = strlen(extension);
+    size_t ext_len = my_strlen(extension);
     size_t file_len = strlen(filename);
 
     if (file_len < ext_len)
         return false;
-    return strcmp(filename + file_len - ext_len, extension) == 0;
+    return my_strcmp(filename + file_len - ext_len, extension) == 0;
 }
 
 int check_binary(char *filename)
