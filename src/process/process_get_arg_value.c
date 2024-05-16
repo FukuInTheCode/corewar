@@ -35,7 +35,6 @@ size_t process_get_arg_value(process_t *process, arena_t *arena, size_t arg_id)
         return get_value(arena->arena + (process->PC + get_value(arena->arena
             + process->PC + offset, IND_SIZE)) % IDX_MOD, REG_SIZE);
     if (arg_type == T_REG)
-        return process_get_register(process, get_value(arena->arena +
-            process->PC + offset, 1));
+        return get_value(arena->arena + process->PC + offset, 1);
     return 0;
 }
