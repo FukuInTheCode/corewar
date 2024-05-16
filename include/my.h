@@ -73,6 +73,10 @@ size_t process_get_arg_value(process_t *process, arena_t *arena,
     size_t arg_id);
 
 
+void arena_write(arena_t *arena, size_t pos, uint8_t n, size_t value);
+size_t arena_read(arena_t *arena, size_t pos, uint8_t n);
+
+
 void *my_memset(char *, char, size_t);
 void *my_memcpy(void *dest, void *src, size_t n);
 int my_strcmp(char const *s1, char const *s2);
