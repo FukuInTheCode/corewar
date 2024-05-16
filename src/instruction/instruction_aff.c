@@ -16,5 +16,5 @@ void instruction_aff(process_t *process, arena_t *arena)
     arg1 = process_get_register(process,
         process_get_arg_value(process, arena, 0)) % 256;
     write(1, (void *)&arg1, 1);
-    process_move(process, 2);
+    process_move(process, 3);
 }
