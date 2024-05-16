@@ -7,12 +7,12 @@
 
 #include "my.h"
 
-void *my_memcpy(void *dest, void *src, size_t n)
+void *my_memcpy(void *dest, void *src, int64_t n)
 {
     char *tmp = dest;
     char *tmp2 = src;
 
-    for (size_t i = 0; i < n; i++)
+    for (int64_t i = 0; i < n; i++)
         tmp[i] = tmp2[i];
     return dest;
 }

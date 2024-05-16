@@ -9,9 +9,9 @@
 
 int my_atoi(char const *s)
 {
-    size_t result = 0;
+    int64_t result = 0;
 
-    for (size_t i = *s == '-' || *s == '+'; s[i]; i++)
+    for (int64_t i = *s == '-' || *s == '+'; s[i]; i++)
         result = 10 * result + s[i] - '0';
     return result * (1 - 2 * (*s == '-'));
 }

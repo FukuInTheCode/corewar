@@ -55,9 +55,9 @@ typedef struct op_s {
     #define REG_SIZE DIR_SIZE
 
 /*
-** op_tab
+** ops
 */
-extern op_t op_tab[];
+extern op_t ops[];
 
 /*
 ** header
