@@ -7,9 +7,9 @@
 
 #include "my.h"
 
-void *my_memset(char *p, char c, size_t count)
+void *my_memset(char *p, char c, int64_t count)
 {
-    for (size_t i = 0; i < count; i++)
+    for (int64_t i = 0; i < count; i++)
         p[i] = c;
     return (void *)p;
 }

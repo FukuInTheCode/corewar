@@ -8,12 +8,12 @@
 #include "my.h"
 
 
-size_t arena_read(arena_t *arena, size_t pos, uint8_t n)
+int64_t arena_read(arena_t *arena, int64_t pos, uint8_t n)
 {
     uint8_t value[n];
-    size_t ret = 0;
+    int64_t ret = 0;
 
-    for (size_t i = 0; i < n; i++)
+    for (int64_t i = 0; i < n; i++)
         value[i] = (arena->arena[(pos + i) % MEM_SIZE] >>
             (2 * (n - i - 1))) & 0x03;
     my_memcpy((void *)&ret, (void *)value, n);

@@ -11,7 +11,6 @@
     #include "op.h"
     #include <stdint.h>
     #include <stdbool.h>
-    #include <stddef.h>
     #include <stdint.h>
     #include <stdlib.h>
     #include <unistd.h>
@@ -25,10 +24,10 @@ typedef struct process_s {
     uint8_t binary[MEM_SIZE + 1];
     bool is_dead;
     int cycles_to_wait;
-    size_t PC;
+    int64_t PC;
     bool carry;
     uint8_t registers[REG_NUMBER][REG_SIZE];
-    size_t cycles_to_die;
+    int64_t cycles_to_die;
     struct process_s *next;
 } process_t;
 
@@ -36,9 +35,9 @@ typedef struct arena_s {
     process_t *champions;
     uint8_t arena[MEM_SIZE];
     uint8_t arena_copy[MEM_SIZE];
-    size_t cycles_to_die;
-    size_t nbr_live;
-    size_t total_cycles;
+    int64_t cycles_to_die;
+    int64_t nbr_live;
+    int64_t total_cycles;
 } arena_t;
 
 typedef struct process_info_s {
@@ -61,36 +60,36 @@ void process_destroy(process_t *);
 void process_kill(process_t *to_kill);
 int process_update(process_t *process);
 void process_move(process_t *process, int nbr_bytes);
-int process_change_register(process_t *process, size_t register_id, uint8_t *);
-size_t process_get_register(process_t *process, size_t register_id);
+int process_change_register(process_t *process, int64_t register_id, uint8_t *);
+int64_t process_get_register(process_t *process, int64_t register_id);
 void process_add(process_t **head, process_t *to_add);
 process_t *process_copy(process_t *head);
 int process_read_instruction(process_t *process, arena_t *arena);
-int process_get_arg_type(process_t *process, arena_t *arena, size_t arg_id);
-size_t process_get_arg_size(process_t *process, arena_t *arena,
-    size_t arg_type);
-size_t process_get_arg_value(process_t *process, arena_t *arena,
-    size_t arg_id);
+int process_get_arg_type(process_t *process, arena_t *arena, int64_t arg_id);
+int64_t process_get_arg_size(process_t *process, arena_t *arena,
+    int64_t arg_type);
+int64_t process_get_arg_value(process_t *process, arena_t *arena,
+    int64_t arg_id);
 
 
-void arena_write(arena_t *arena, size_t pos, uint8_t n, size_t value);
-size_t arena_read(arena_t *arena, size_t pos, uint8_t n);
+void arena_write(arena_t *arena, int64_t pos, uint8_t n, int64_t value);
+int64_t arena_read(arena_t *arena, int64_t pos, uint8_t n);
 
 
-void *my_memset(char *, char, size_t);
-void *my_memcpy(void *dest, void *src, size_t n);
+void *my_memset(char *, char, int64_t);
+void *my_memcpy(void *dest, void *src, int64_t n);
 int my_strcmp(char const *s1, char const *s2);
 bool my_is_num(char const *);
 int my_atoi(char const *);
 
-typedef int(*instruction_f_t)(process_t *, arena_t *);
+typedef void(*instruction_f_t)(process_t *, arena_t *);
 
 typedef struct instruction_s {
     uint8_t code;
     instruction_f_t f;
 } instruction_t;
 
-int instruction_live(process_t *process, arena_t *arena);
+void instruction_live(process_t *process, arena_t *arena);
 
 static instruction_t const instructions[] = {
     {0x01, instruction_live},

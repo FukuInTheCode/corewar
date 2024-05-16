@@ -11,9 +11,9 @@
 
 void instruction_sub(process_t *process, arena_t *arena)
 {
-    size_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[4].type[0];
-    size_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[4].type[1];
-    size_t arg3 = process_get_arg_type(process, arena, 2) & op_tab[4].type[2];
+    int64_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[4].type[0];
+    int64_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[4].type[1];
+    int64_t arg3 = process_get_arg_type(process, arena, 2) & op_tab[4].type[2];
 
     if (!arg1 || !arg2 || !arg3)
         return process_move(process, 1);

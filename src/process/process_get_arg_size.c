@@ -8,8 +8,8 @@
 #include "my.h"
 #include "op.h"
 
-size_t process_get_arg_size(process_t *process, arena_t *arena,
-    size_t arg_type)
+int64_t process_get_arg_size(process_t *process, arena_t *arena,
+    int64_t arg_type)
 {
     if (!process || !arena)
         return 0;

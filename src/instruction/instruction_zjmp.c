@@ -10,7 +10,7 @@
 
 void instruction_zjmp(process_t *process, arena_t *arena)
 {
-    size_t to_go = 0;
+    int64_t to_go = 0;
 
     if (!process->carry)
         process_move(process, 3);

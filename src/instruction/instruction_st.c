@@ -10,8 +10,8 @@
 
 void instruction_st(process_t *process, arena_t *arena)
 {
-    size_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[2].type[0];
-    size_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[2].type[1];
+    int64_t arg1 = process_get_arg_type(process, arena, 0) & op_tab[2].type[0];
+    int64_t arg2 = process_get_arg_type(process, arena, 1) & op_tab[2].type[1];
 
     if (!arg1 || !arg2)
         return process_move(process, 1);

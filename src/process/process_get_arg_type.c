@@ -8,7 +8,7 @@
 #include "my.h"
 #include "op.h"
 
-int process_get_arg_type(process_t *process, arena_t *arena, size_t arg_id)
+int process_get_arg_type(process_t *process, arena_t *arena, int64_t arg_id)
 {
     if (arg_id >= MAX_ARGS_NUMBER)
         return 0;
