@@ -25,5 +25,7 @@ int instruction_add(process_t *process, arena_t *arena)
     sum = process_get_register(process, first) +
         process_get_register(process, second);
     process_change_register(process, third, (uint8_t *)&sum);
+    process_move(process, 4);
+    process->carry = !sum;
     return 0;
 }
