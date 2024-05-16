@@ -20,7 +20,7 @@ op_t op_tab[] = {
         "ou  (or   r1, r2, r3   r1 | r2 -> r3"},
     {"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
         "ou (xor  r1, r2, r3   r1^r2 -> r3"},
-    {"zjmp", 1, {T_DIR}, 9, 20, "jump if zero"},
+    {"zjmp", 1, {T_IND}, 9, 20, "jump if zero"},
     {"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
         "load index"},
     {"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
