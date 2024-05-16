@@ -7,10 +7,11 @@
 
 #include "my.h"
 #include "op.h"
+#include "string.h"
 
 static bool check_prog_size(header_t *data)
 {
-    if (data->prog_size < MEM_SIZE)
+    if (data->prog_size > MEM_SIZE)
         return true;
     return false;
 }
@@ -29,6 +30,15 @@ static bool check_prog_name(header_t *data)
     return false;
 }
 
+bool is_extension(const char *extension, const char *filename) {
+    size_t ext_len = strlen(extension);
+    size_t file_len = strlen(filename);
+
+    if (file_len < ext_len)
+        return false;
+    return strcmp(filename + file_len - ext_len, extension) == 0;
+}
+
 int check_binary(char *filename)
 {
     FILE *file = fopen(filename, "rb");
@@ -36,10 +46,12 @@ int check_binary(char *filename)
 
     if (file == NULL)
         return 84;
-    if (fread(&data, sizeof(header_t), 1, file) != (size_t)-1) {
+    if (fread(&data, sizeof(header_t), 1, file) == (size_t)-1) {
         fclose(file);
         return 84;
     }
+    if (!is_extension(".cor", filename))
+        return 84;
     if (!check_prog_name(&data) || !check_comment(&data)
         || !check_prog_size(&data)) {
         fclose(file);
