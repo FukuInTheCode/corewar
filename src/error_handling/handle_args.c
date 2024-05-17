@@ -58,7 +58,7 @@ int handle_args(int argc, char **argv)
     if (argc <= 2 || argc > 23)
         return 84;
     for (uint8_t i = 0; i < 4; i++) {
-        args.processes[i].id = 0;
+        args.processes[i].id = i + 1;
         args.processes[i].filename = NULL;
         args.processes[i].address = 0;
     }

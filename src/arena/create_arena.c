@@ -24,6 +24,6 @@ int create_arena(process_t *champions, args_t *args)
         champions->PC = i * (MEM_SIZE / args->proccess_n);
         champions = champions->next;
     }
-    my_memcpy(arena->arena_copy, arena->arena , MEM_SIZE);
+    my_memcpy(arena->arena_copy, arena->arena, MEM_SIZE);
     return corewar_loop(arena, args);
 }

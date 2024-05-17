@@ -18,8 +18,11 @@ void instruction_live(process_t *process, arena_t *arena)
         if (tmp->process_id != live_id)
             continue;
         tmp->cycles_to_die = arena->cycles_to_die;
+        arena->winner = live_id;
     }
     write(1, process->name, my_strlen(process->name));
-    write(1, " say LIVE!\n", 11);
+    write(1, "(", 1);
+    my_put_nbr(live_id);
+    write(1, ") say LIVE!\n", 12);
     process_move(process, 5);
 }

@@ -13,5 +13,7 @@ int process_update(process_t *process)
         process->cycles_to_wait -= 1;
     if (process->is_dead == false)
         process->cycles_to_die -= 1;
+    if (process->cycles_to_die <= 0)
+        process_kill(process);
     return 0;
 }
