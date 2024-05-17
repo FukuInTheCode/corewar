@@ -55,7 +55,7 @@ int handle_args(int argc, char **argv)
 {
     args_t args = {.dump = -1, .proccess_n = 0};
 
-    if (argc == 1 || argc > 23)
+    if (argc <= 2 || argc > 23)
         return 84;
     for (uint8_t i = 0; i < 4; i++) {
         args.processes[i].id = 0;
