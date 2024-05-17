@@ -18,6 +18,7 @@ static int read_file(FILE *file, process_t *new)
     }
     my_strcat(new->name, data.prog_name);
     my_strcat(new->comment, data.comment);
+    new->binary_size = data.prog_size;
     fread(new->binary, MEM_SIZE, 1, file);
     return 0;
 }

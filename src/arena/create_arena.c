@@ -1,0 +1,28 @@
+/*
+** EPITECH PROJECT, 2024
+** create_arena.c
+** File description:
+** create_arena.c
+*/
+
+#include "my.h"
+#include "op.h"
+
+int create_arena(process_t *champions, args_t *args)
+{
+    arena_t *arena = NULL;
+
+    if (!champions || !args || args->proccess_n <= 1)
+        return 84;
+    arena = arena_create();
+    if (!arena)
+        return 84;
+    arena->champions = champions;
+    for (size_t i = 0; i < args->proccess_n; i++) {
+        my_memcpy(arena->arena + i * (MEM_SIZE / args->proccess_n),
+            champions->binary, champions->binary_size);
+        champions = champions->next;
+    }
+    my_memcpy(arena->arena_copy, arena->arena , MEM_SIZE);
+    return 0;
+}
