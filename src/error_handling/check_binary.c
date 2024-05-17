@@ -29,9 +29,10 @@ static bool check_prog_name(header_t *data)
     return false;
 }
 
-bool is_extension(const char *extension, const char *filename) {
+bool is_extension(const char *extension, const char *filename)
+{
     size_t ext_len = my_strlen(extension);
-    size_t file_len = strlen(filename);
+    size_t file_len = my_strlen(filename);
 
     if (file_len < ext_len)
         return false;
