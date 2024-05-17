@@ -10,7 +10,8 @@
 
 static bool check_prog_size(header_t *data)
 {
-    if (my_revbyte_32(data->prog_size) < MEM_SIZE)
+    reverse_bytes((void *)&data->prog_size, 4);
+    if (data->prog_size < MEM_SIZE)
         return true;
     return false;
 }
