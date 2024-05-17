@@ -29,6 +29,8 @@ Il suffit de cloner les dépositoire (ou répositoire) avec la commande suivante
 ## Comment l'utiliser ?
 Le pdf d'EPITECH ne vous donnera que le -h comme vrai repère de ce qu'il faut récupérer mais nous sommes là pour arranger cela :)
 
+Avant tout, il vous faudra faire la commande `Make` pour obtenir le binaire.
+
 Tom vous explique tout ça très rapidement et simplement :
 
 > Pour utiliser le COREWAR, il faut tout d'abord avoir des .cor valides puis les passer en paramètres du binaire corewar comme ceci `./corewar champ1.cor champ2.cor ...` il faut avoir un minimum de 2 champions et un maximum de 4 champions. <br>
