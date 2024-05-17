@@ -75,7 +75,11 @@ int create_process(args_t *);
 
 void arena_write(arena_t *arena, int64_t pos, uint8_t n, int64_t value);
 int64_t arena_read(arena_t *arena, int64_t pos, uint8_t n);
-
+arena_t *arena_create(void);
+void arena_destroy(arena_t *arena);
+int arena_update(arena_t *arena);
+bool arena_is_end(arena_t *arena);
+int arena_play_cycle(arena_t *arena);
 
 void *my_memset(char *, char, int64_t);
 void *my_memcpy(void *dest, void *src, int64_t n);
