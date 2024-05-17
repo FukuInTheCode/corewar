@@ -93,7 +93,7 @@ Tom vous explique tout ça très rapidement et simplement :
             <td>Il prend trois paramètres. Les deux premiers doivent être soit des index, soit des registres. Le troisième doit être un registre. Cette opération modifie le "carry".</td>
         </tr>
         <tr>
-            <td>0x0b (sti)/td>
+            <td>0x0b (sti)</td>
             <td>Il prend trois paramètres. Le premier doit être un registre. Les deux autres peuvent être un index ou un registre.</td>
         </tr>
         <tr>
