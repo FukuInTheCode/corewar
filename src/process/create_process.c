@@ -13,12 +13,12 @@ static int read_file(FILE *file, process_t *new)
 
     if (fread(&data, sizeof(header_t), 1, file) == (size_t)-1) {
         free(new);
-        fclose(file);
         return 84;
     }
     my_strcat(new->name, data.prog_name);
     my_strcat(new->comment, data.comment);
     new->binary_size = data.prog_size;
+    new->binary_size = my_revbyte_32(new->binary_size);
     fread(new->binary, MEM_SIZE, 1, file);
     return 0;
 }
@@ -64,5 +64,5 @@ int create_process(args_t *args)
             return 84;
         }
     }
-    return 0;
+    return create_arena(head, args);
 }

@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "op.h"
 
 void instruction_live(process_t *process, arena_t *arena)
 {
