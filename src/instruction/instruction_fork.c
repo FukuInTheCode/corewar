@@ -17,6 +17,6 @@ void instruction_fork(process_t *process, arena_t *arena)
         return process_move(process, 1);
     process_add(&arena->champions, forked);
     forked->cycles_to_wait = ops[11].nbr_cycles + 1;
-    process_move(forked, (process->PC + to_go) % IDX_MOD);
+    process_move(forked, process->PC + to_go % IDX_MOD);
     process_move(process, 3);
 }

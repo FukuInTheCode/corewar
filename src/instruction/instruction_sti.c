@@ -27,7 +27,7 @@ static void do_sti(process_t *process, arena_t *arena,
     arg3 += arg2;
     arena_write(arena, process->PC +
         (short)arg3 % IDX_MOD, REG_SIZE, (void *)&arg1);
-    process_move(process, process_get_arg_size(process, arena, arg2_type) + 2 +
+    process_move(process, process_get_arg_size(process, arena, arg2_type) - 2 +
         process_get_arg_size(process, arena,
         process_get_arg_type(process, arena, 0)) + process_get_arg_size(process
         , arena, process_get_arg_type(process, arena, 1)));

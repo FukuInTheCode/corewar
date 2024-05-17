@@ -18,8 +18,8 @@ void instruction_ld(process_t *process, arena_t *arena)
     if (!arg1 || !arg2)
         return process_move(process, 1);
     if (arg1 == T_IND)
-        arg1 = arena_read(arena, (process->PC +
-            process_get_arg_value(process, arena, 0)) % IDX_MOD, IND_SIZE);
+        arg1 = arena_read(arena, process->PC +
+            process_get_arg_value(process, arena, 0) % IDX_MOD, IND_SIZE);
     else
         arg1 = process_get_arg_value(process, arena, 0);
     arg2 = process_get_arg_value(process, arena, 1);

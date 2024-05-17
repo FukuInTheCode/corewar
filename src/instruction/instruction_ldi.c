@@ -30,10 +30,10 @@ static void do_ldi(process_t *process, arena_t *arena,
     if (arg1_type == T_DIR)
         arg1 = process_get_arg_value(process, arena, 0);
     if (arg1_type == T_IND)
-        arg1 = arena_read(arena, IND_SIZE, (process->PC +
-            process_get_arg_value(process, arena, 0)) % IDX_MOD);
+        arg1 = arena_read(arena, IND_SIZE, process->PC +
+            process_get_arg_value(process, arena, 0) % IDX_MOD);
     arg1 += arg2;
-    arg1 = arena_read(arena, (process->PC + arg1) % IDX_MOD, REG_SIZE);
+    arg1 = arena_read(arena, process->PC + arg1 % IDX_MOD, REG_SIZE);
     process_change_register(process, arg3, (uint8_t *)&arg1);
     process->carry = !arg1;
     update_process(process, arena, arg1);
