@@ -44,7 +44,7 @@ static int handle_arg(int argc, char **argv, uint8_t *i, args_t *args)
     if (!my_strcmp("-dump", argv[*i])) {
         if (args->dump != -1 || (*i) + 1 >= argc || !my_is_num(argv[*i + 1]))
             return 84;
-        args->dump = my_atoi(argv[*i]);
+        args->dump = my_atoi(argv[*i + 1]);
         *i += 1;
         return 0;
     }
