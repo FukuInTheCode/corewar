@@ -13,7 +13,7 @@ Dans ce dernier, le but est d'acquérir les compétences nécessaires pour pouvo
 ### Qu'est-ce que le Corewar ?
 Le tournoi Corewar est un jeu dans lequel plusieurs programmes appelés "Champions" vont se battre dans une simulation virtuelle appelé "mémoire". Le dernier en vie gagne.
 
-> Core War est un jeu de programmation de 1984 créé par D. G. Jones et A. K. Dewdney dans lequel deux ou plusieurs programmes de combat (appelés « Champions ») s'affrontent pour le contrôle d'un ordinateur virtuel. Ces programmes de combat sont écrits dans un langage assembleur abstrait appelé Redcode. Les normes pour le langage et la machine virtuelle ont été initialement définies par l'International Core Wars Society (ICWS), mais les normes ultérieures ont été déterminées par consensus communautaire.
+> Core War est un jeu de programmation de 1984 créé par D. G. Jones et A. K. Dewdney dans lequel deux ou plusieurs programmes de combat (appelés « Champions ») s'affrontent pour le contrôle d'un ordinateur virtuel. Ces programmes de combat sont écrits dans un langage assembleur abstrait appelé Redcode. Les normes pour le langage et la machine virtuelle ont été initialement définies par l'International Core Wars Society (ICWS), mais les normes ultérieures ont été déterminées par consensus communautaire. <br><br> Wikipedia
 
 ### Quels sont les objectifs de ce projet ? 
 L'objectif principal est de créer la "machine virtuelle" où vont se battre les "champions". L'importance de la machine est d'exécuter correctement les instructions de chacun en en respectant un ordre et un cycle de jeu dans un temps imparti ou jusqu'à ce qu'il n'en reste plus qu'un.
