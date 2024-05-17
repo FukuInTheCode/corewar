@@ -82,6 +82,8 @@ int arena_update(arena_t *arena);
 bool arena_is_end(arena_t *arena);
 int arena_play_cycle(arena_t *arena);
 
+int corewar_loop(arena_t *);
+
 void *my_memset(char *, char, int64_t);
 void *my_memcpy(void *dest, void *src, int64_t n);
 int my_strcmp(char const *s1, char const *s2);
