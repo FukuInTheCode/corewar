@@ -81,6 +81,7 @@ void arena_destroy(arena_t *arena);
 int arena_update(arena_t *arena);
 bool arena_is_end(arena_t *arena);
 int arena_play_cycle(arena_t *arena);
+int create_arena(process_t *champions, args_t *args);
 
 int corewar_loop(arena_t *);
 
@@ -91,6 +92,9 @@ bool my_is_num(char const *);
 int my_atoi(char const *);
 int my_strlen(char const *);
 char *my_strcat(char *, char const *);
+uint8_t my_revbyte_8(uint8_t num);
+uint16_t my_revbyte_16(uint16_t num);
+uint32_t my_revbyte_32(uint32_t num);
 
 typedef void(*instruction_f_t)(process_t *, arena_t *);
 
