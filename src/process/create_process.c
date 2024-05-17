@@ -7,7 +7,7 @@
 
 #include "my.h"
 
-static int read_file(FILE *file, process_t *new)
+static int read_file(FILE *file, process_t *new, uint64_t id)
 {
     header_t data;
 
@@ -18,12 +18,14 @@ static int read_file(FILE *file, process_t *new)
     my_strcat(new->name, data.prog_name);
     my_strcat(new->comment, data.comment);
     new->binary_size = data.prog_size;
-    new->binary_size = my_revbyte_32(new->binary_size);
+    reverse_bytes((void *)&new->binary_size, 4);
+    process_change_register(new, 0, (void *)&id);
+    new->process_id = id;
     fread(new->binary, MEM_SIZE, 1, file);
     return 0;
 }
 
-static int open_file(char *filename, process_t **head)
+static int open_file(char *filename, process_t **head, uint64_t id)
 {
     FILE *file = NULL;
     process_t *new = NULL;
@@ -37,7 +39,7 @@ static int open_file(char *filename, process_t **head)
         free(new);
         return 84;
     }
-    read_file(file, new);
+    read_file(file, new, id);
     fclose(file);
     return 0;
 }
@@ -59,7 +61,8 @@ int create_process(args_t *args)
     if (args == NULL)
         return 84;
     for (int i = 0; i < args->proccess_n; i++) {
-        if (open_file(args->processes[i].filename, &head) == 84) {
+        if (open_file(args->processes[i].filename, &head,
+            args->processes[i].id) == 84) {
             free_all(head);
             return 84;
         }

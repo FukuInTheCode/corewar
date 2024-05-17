@@ -39,6 +39,7 @@ typedef struct arena_s {
     int64_t cycles_to_die;
     int64_t nbr_live;
     int64_t total_cycles;
+    int64_t winner;
 } arena_t;
 
 typedef struct process_info_s {
@@ -74,7 +75,7 @@ int64_t process_get_arg_value(process_t *process, arena_t *arena,
 int create_process(args_t *);
 
 
-void arena_write(arena_t *arena, int64_t pos, uint8_t n, int64_t value);
+void arena_write(arena_t *arena, int64_t pos, uint8_t n, int8_t *value);
 int64_t arena_read(arena_t *arena, int64_t pos, uint8_t n);
 arena_t *arena_create(void);
 void arena_destroy(arena_t *arena);
@@ -82,8 +83,9 @@ int arena_update(arena_t *arena);
 bool arena_is_end(arena_t *arena);
 int arena_play_cycle(arena_t *arena);
 int create_arena(process_t *champions, args_t *args);
+void arena_dump(uint8_t binary[], size_t size);
 
-int corewar_loop(arena_t *);
+int corewar_loop(arena_t *, args_t *);
 
 void *my_memset(char *, char, int64_t);
 void *my_memcpy(void *dest, void *src, int64_t n);
@@ -92,9 +94,10 @@ bool my_is_num(char const *);
 int my_atoi(char const *);
 int my_strlen(char const *);
 char *my_strcat(char *, char const *);
-uint8_t my_revbyte_8(uint8_t num);
-uint16_t my_revbyte_16(uint16_t num);
-uint32_t my_revbyte_32(uint32_t num);
+void reverse_bytes(uint8_t *arr, size_t size);
+int my_put_nbr(int nb);
+void my_putchar(char c);
+
 
 typedef void(*instruction_f_t)(process_t *, arena_t *);
 

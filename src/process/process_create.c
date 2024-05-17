@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "op.h"
 
 process_t *process_create(void)
 {
@@ -14,5 +15,7 @@ process_t *process_create(void)
     if (!new_process)
         return NULL;
     my_memset((void *)new_process, 0, sizeof(process_t));
+    new_process->cycles_to_die = CYCLE_TO_DIE;
+    new_process->carry = 1;
     return new_process;
 }

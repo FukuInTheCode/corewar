@@ -6,6 +6,7 @@
 */
 
 #include "my.h"
+#include "op.h"
 
 process_t *process_copy(process_t *head)
 {

@@ -23,7 +23,7 @@ void instruction_st(process_t *process, arena_t *arena)
         return;
     }
     arg2 = process_get_arg_value(process, arena, 1);
-    arena_write(arena, process->PC + arg2, REG_SIZE, arg1);
+    arena_write(arena, process->PC + arg2, REG_SIZE, (void *)&arg1);
     process_move(process, 2 + process_get_arg_size(process, arena,
         process_get_arg_type(process, arena, 0)) +
         process_get_arg_size(process, arena,

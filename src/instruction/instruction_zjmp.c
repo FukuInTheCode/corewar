@@ -15,5 +15,5 @@ void instruction_zjmp(process_t *process, arena_t *arena)
     if (!process->carry)
         return process_move(process, 3);
     to_go = arena_read(arena, process->PC + 1, IND_SIZE);
-    process->PC = ((process->PC + to_go) % IDX_MOD) % MEM_SIZE;
+    process->PC = ((process->PC + (short)to_go) % IDX_MOD) % MEM_SIZE;
 }

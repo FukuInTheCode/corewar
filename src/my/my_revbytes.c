@@ -7,23 +7,13 @@
 
 #include "my.h"
 
-uint8_t my_revbyte_8(uint8_t num)
+void reverse_bytes(uint8_t *arr, size_t size)
 {
-    uint8_t result = 0;
+    uint8_t tmp = 0;
 
-    for (int i = 0; i < 8; i++) {
-        result |= ((num >> i) & 1) << (7 - i);
+    for (size_t i = 0; i < size / 2; i++) {
+        tmp = arr[i];
+        arr[i] = arr[size - i - 1];
+        arr[size - i - 1] = tmp;
     }
-    return result;
-}
-
-uint16_t my_revbyte_16(uint16_t num)
-{
-    return (num << 8) | (num >> 8);
-}
-
-uint32_t my_revbyte_32(uint32_t num)
-{
-    return ((num & 0xFF) << 24) | (((num >> 8) & 0xFF) << 16)
-        | (((num >> 16) & 0xFF) << 8) | ((num >> 24) & 0xFF);
 }

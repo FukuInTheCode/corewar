@@ -16,7 +16,7 @@ int64_t process_get_arg_value(process_t *process,
 
     if (arg_id >= MAX_ARGS_NUMBER)
         return 0;
-    for (int64_t i = 0; i < arg_id; i++)
+    for (int64_t i = 0; i < arg_id - 1; i++)
         offset += process_get_arg_size(process, arena,
             process_get_arg_type(process, arena, i));
     arg_type = process_get_arg_type(process, arena, arg_id);
