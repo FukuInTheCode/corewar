@@ -26,6 +26,7 @@ typedef struct process_s {
     int cycles_to_wait;
     size_t PC;
     bool carry;
+    size_t binary_size;
     uint8_t registers[REG_NUMBER][REG_SIZE];
     int64_t cycles_to_die;
     struct process_s *next;
