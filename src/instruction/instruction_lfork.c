@@ -10,7 +10,7 @@
 void instruction_lfork(process_t *process, arena_t *arena)
 {
     int64_t to_go = arena_read(arena, process->PC + 1, IND_SIZE);
-    process_t *forked = process_create();
+    process_t *forked = process_copy(process);
 
     if (!forked)
         return process_move(process, 1);
