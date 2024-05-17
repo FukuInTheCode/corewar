@@ -41,6 +41,16 @@ static int open_file(char *filename, process_t **head)
     return 0;
 }
 
+static void free_all(process_t *head)
+{
+    process_t *tmp = NULL;
+
+    for (; head; head = tmp) {
+        tmp = head->next;
+        process_destroy(head);
+    }
+}
+
 int create_process(args_t *args)
 {
     process_t *head = NULL;
@@ -48,7 +58,10 @@ int create_process(args_t *args)
     if (args == NULL)
         return 84;
     for (int i = 0; i < args->proccess_n; i++) {
-        open_file(args->processes[i].filename, &head);
+        if (open_file(args->processes[i].filename, &head) == 84) {
+            free_all(head);
+            return 84;
+        }
     }
     return 0;
 }
