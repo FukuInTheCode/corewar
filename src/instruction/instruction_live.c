@@ -14,6 +14,8 @@ void instruction_live(process_t *process, arena_t *arena)
 
     arena->nbr_live++;
     live_id = arena_read(arena, process->PC + 1, DIR_SIZE);
+    live_id = my_revbyte_32(live_id);
+    printf("%llx\n", live_id);
     for (process_t *tmp = arena->champions; tmp; tmp = tmp->next) {
         if (tmp->process_id != live_id)
             continue;
