@@ -135,6 +135,9 @@ Si après un certains nombres d'execution (représenté par "**NBR_LIVE**") de l
 L'une des particularité qui été obligatoire de notre machine est qu'elle peut-être lancé sans environnement graphique. C'est-à-dire que le programme peut être exécuté et fonctionner efficacement sans nécessiter de système d'interface utilisateur graphique (GUI).
 Cela signifie que le programme peut être exécuté en ligne de commande, généralement via un terminal ou une invite de commande, sans avoir besoin d'une interface graphique comme des fenêtres, des boutons, des icônes, etc.
 
+## Crédits 
+tom.carlier@epitech.eu ([FukuInTheCode](https://github.com/FukuInTheCode)) <br>
+emma.farineaux@epitech.eu ([EmmaFrx](https://github.com/EmmaFrx))
 
 **Beware of -42 Epitech students !!**
 
