@@ -142,3 +142,5 @@ static instruction_t const instructions[] = {
     {0x10, instruction_aff},
     {0x00, NULL}
 };
+
+int display_help(int, char **, char const *);
